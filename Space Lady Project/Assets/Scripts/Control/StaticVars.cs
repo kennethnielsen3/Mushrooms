@@ -21,6 +21,7 @@ public class StaticVars : MonoBehaviour {
 	public static bool invincible = false;
 	public static bool attacking = false;
 	public static bool crouching = false;
+	public static bool up = false;
     public static float knockBackTime;
 	public enum ProjectileDirection {UP, LEFT, RIGHT, DOWN}
 	public enum color {RED, YELLOW, GREEN, BLUE, MAGENTA, WHITE, BLACK}

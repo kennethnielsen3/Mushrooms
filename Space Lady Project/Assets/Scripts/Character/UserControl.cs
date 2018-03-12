@@ -42,23 +42,24 @@ public class UserControl : MonoBehaviour
                 attack();
             }
 
-            if(Input.GetButton("DownArrow"))
+            if(Input.GetAxis("Vertical") >= 0.01f)
             {
                 crouchOn();
             }
-            if(Input.GetButtonUp("DownArrow"))
+            if(Input.GetAxis("Vertical") <= 0.01f)
             {
                 crouchOff();
             }
-            if(Input.GetButton("DownArrow"))
+
+            if(Input.GetAxis("Vertical") <= -0.01f)
             {
-                crouchOn();
+                upKeyOn();
             }
-            if(Input.GetButtonUp("DownArrow"))
+            if(Input.GetAxis("Vertical") >= -0.01f)
             {
-                crouchOff();
+                upKeyOff();
             }
-            
+
             //Move
             float h = Input.GetAxis("Horizontal");
             m_Character.Move(h);
@@ -66,3 +67,18 @@ public class UserControl : MonoBehaviour
         }
     }
 }
+
+/*
+
+
+            if(Input.GetButton("DownArrow"))
+            {
+                crouchOn();
+            }
+            if(Input.GetButtonUp("DownArrow"))
+            {
+                crouchOff();
+            }
+
+
+ */

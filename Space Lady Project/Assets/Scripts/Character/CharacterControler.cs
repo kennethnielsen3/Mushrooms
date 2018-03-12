@@ -13,7 +13,9 @@ public class CharacterControler : MonoBehaviour {
     private Transform m_CeilingCheck;
     const float k_CeilingRadius = .2f;
     private Rigidbody2D m_Rigidbody2D;
-    public GameObject hitBox;
+    public GameObject hitBoxSide;
+    public GameObject hitBoxUp;
+    public GameObject hitBoxDown;
     private Animator anim;
     private bool canAttack = true;
     private bool crawl = false;
@@ -34,6 +36,8 @@ public class CharacterControler : MonoBehaviour {
         UserControl.jumpOff += JumpOff;
         UserControl.crouchOn += Crouch;
         UserControl.crouchOff += Stand;
+        UserControl.upKeyOn += UpOn;
+        UserControl.upKeyOff += UpOff;
         jumpTimeCounter = StaticVars.jumpTime;
     }
 
@@ -52,6 +56,7 @@ public class CharacterControler : MonoBehaviour {
         }
 
         anim.SetBool("Crouch", StaticVars.crouching);
+        //anim.SetBool("Up",StaticVars.up);
     }
 
     void FixedUpdate()
@@ -175,6 +180,16 @@ public class CharacterControler : MonoBehaviour {
         }
 
     }
+    public void UpOn()
+    {
+        StaticVars.up = true;
+    }
+    public void UpOff()
+    {
+        StaticVars.up = false;
+    }
+
+
 
     //Flip Controller
     private void Flip()
@@ -200,13 +215,13 @@ public class CharacterControler : MonoBehaviour {
     public IEnumerator AttackRun()
     {
         StaticVars.attacking = true;
-        hitBox.SetActive(true);
+        hitBoxSide.SetActive(true);
         StartCoroutine (AttackCoolDown());
 
         yield return new WaitForSeconds(0.2f);
        
         StaticVars.attacking = false;
-        hitBox.SetActive(false);
+        hitBoxSide.SetActive(false);
     }
     public IEnumerator AttackCoolDown()
     {

@@ -22,6 +22,7 @@ public class CharacterSpriteController : MonoBehaviour {
 		anim.SetFloat("LR", Mathf.Abs(StaticVars.LR));
         anim.SetBool("Crouch", StaticVars.crouching);
 		anim.SetBool("Alive", StaticVars.alive);
+        anim.SetBool("Up",StaticVars.up);
         
 
         if(StaticVars.invincible && StaticVars.alive)
